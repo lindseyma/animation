@@ -2,17 +2,22 @@ var canvas = document.getElementById("slate");
 var ctx=canvas.getContext("2d");
 ctx.fillStyle = "#ff80ff";
 
-var stop = document.getElementById('b');
+var stop = document.getElementById('stop');
 stop.addEventListener("click", function(){
 	window.cancelAnimationFrame(rid);
-    });
+});
 
 var rid;
-var grow; //change boolean depending on rad
-var x=0;
 
-var dot=function(){
+var circle= document.getElementById('grow');
+circle.addEventListener("click", function(){
+    console.log("ani");
     window.cancelAnimationFrame(rid);
+    var grow;
+    var x=0;
+
+    var dot=function(){
+	console.log("dot");
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	//console.log(rid);
 	ctx.beginPath();
@@ -32,9 +37,11 @@ var dot=function(){
 	ctx.fill();
 	rid=window.requestAnimationFrame(dot);
 	//rid=window.requestAnimationFrame(dot);
-}
+    }
+    dot();
+});
 
-rid=window.requestAnimationFrame(dot);
+//rid=window.requestAnimationFrame(dot);
 //dot();
 
 /*
