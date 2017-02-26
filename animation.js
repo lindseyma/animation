@@ -1,6 +1,10 @@
 var canvas = document.getElementById("slate");
 var ctx=canvas.getContext("2d");
-ctx.fillStyle = "#ff80ff";
+ctx.fillStyle = "#990a2b";
+
+//dvd img
+var image=new Image();
+image.src="dvd.png";
 
 var stop = document.getElementById('stop');
 stop.addEventListener("click", function(){
@@ -8,6 +12,36 @@ stop.addEventListener("click", function(){
 });
 
 var rid;
+
+var dvd = document.getElementById('dvd');
+dvd.addEventListener('click', function(){
+	window.cancelAnimationFrame(rid);
+	var velX=1;
+	var velY=1;
+	var maxX=canvas.width-128;
+	var maxY=canvas.height-128+26;
+	var x = Math.random()*maxX;
+	var y = Math.random() * maxY;
+	//var maxX = canvas.width-128;
+	//var maxY = canvas.height-128+26;
+	
+	var d = function(){
+	    ctx.clearRect(0,0,canvas.width,canvas.height);
+	    ctx.beginPath();
+	    ctx.drawImage(image,x,y);
+	    console.log("drew img?");
+	    if(x>=maxX||x<=0){
+		velX*=-1;
+	    }
+	    if(y>=maxY||y<=-26){
+		velY*=-1;
+	    }
+	    x+=velX;
+	    y+=velY;
+	    rid=window.requestAnimationFrame(d);
+	};
+	d();
+    });
 
 var circle= document.getElementById('grow');
 circle.addEventListener("click", function(){
