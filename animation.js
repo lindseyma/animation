@@ -2,8 +2,8 @@ var canvas = document.getElementById("slate");
 var ctx=canvas.getContext("2d");
 ctx.fillStyle = "#ff80ff";
 
-var b = document.getElementById('b');
-b.addEventListener("click", function(){
+var stop = document.getElementById('b');
+stop.addEventListener("click", function(){
 	window.cancelAnimationFrame(rid);
     });
 
